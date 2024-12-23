@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vw="clr-namespace:AvaloniaInitor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaInitor.Views.PresetLayoutView"
+             x:DataType="vw:UnityPresetViewModel">
+    <Design.DataContext>
+        <vw:UnityPresetViewModel />
+    </Design.DataContext>
+
+    <StackPanel>
+        <Button Content="Create"
+                Margin="0 0 0  15"
+                FontSize="16"
+                IsEnabled="{Binding IsProjectSelected}"
+                Command="{Binding CreateAllCommand}" />
+        <ListBox Name="PresetsListBox"
+                 IsEnabled="{Binding IsProjectSelected}"
+                 ItemsSource="{Binding PresetFiles}"
+                 SelectedItem="{Binding SelectedFile, Mode=TwoWay}"
+                 FontSize="16"
+                 SelectionMode="Multiple">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                </Style>
+                <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+                <!-- <Style Selector="ListBoxItem[IsPointerOver=true] /template/ ContentPresenter"> -->
+                <!--     <Setter Property="Background" Value="Transparent" /> -->
+                <!-- </Style> -->
+            </ListBox.Styles>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Name="ListBoxItemPresetFile" FontSize="14">
+                        <CheckBox IsChecked="{Binding  IsSelected}"
+                                  Margin="8 2"
+                                  Content="{Binding Name, Mode=TwoWay}" />
+                    </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

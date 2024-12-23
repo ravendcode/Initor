@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaInitor.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaInitor.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/initor.ico"
+        Title="Initor"
+        Width="800"
+        Height="600">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*">
+        <StackPanel Grid.Row="0" Margin="20" HorizontalAlignment="Left" Orientation="Horizontal">
+            <!-- <Button Content="Select Project" Command="{Binding SelectProjectCommand}" /> -->
+            <Button Content="Select Project" Click="ButtonSelectProject_OnClick" FontSize="16" />
+            <Label Content="{Binding ProjectPath}" VerticalAlignment="Center" Margin="5" />
+            <!-- <Image Source="/Assets/avalonia-logo.ico" Height="200" /> -->
+        </StackPanel>
+
+        <SplitView Grid.Row="1" IsPaneOpen="{Binding IsPaneOpen}"
+                   DisplayMode="CompactInline"
+                   OpenPaneLength="300"
+                   CompactPaneLength="48">
+            <SplitView.Pane>
+                <Grid RowDefinitions="*, Auto, Auto">
+                    <StackPanel Spacing="5" Margin="5">
+                        <Button Command="{Binding TriggerPaneCommand}">
+                            <PathIcon Data="{StaticResource LineHorizontal3Regular}" />
+                        </Button>
+                        <ListBox ItemsSource="{Binding Items}"
+                                 SelectedItem="{Binding SelectedListItem}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <Image HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Height="24"
+                                               Margin="-5 4 1 0"
+                                               Source="{Binding Image}" />
+                                        <!-- <PathIcon Margin="-3 0 0 0" Data="{Binding ListItemIcon}"></PathIcon> -->
+                                        <TextBlock Text="{Binding Label}"
+                                                   FontSize="16"
+                                                   Margin=" 0 4 0 0"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <Button Grid.Row="1" FontSize="16" Margin="5 5 5 0" HorizontalAlignment="Stretch"
+                            Command="{Binding TriggerThemeCommand}"
+                            HotKey="T">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <Label Classes="Icon" Content="{Binding ThemeIco}" />
+                            <!-- <Label Classes="Icon" Content="&#xE330;" /> -->
+                        </StackPanel>
+                    </Button>
+                    <Button Grid.Row="2" FontSize="16" Margin="5" HorizontalAlignment="Stretch"
+                            Command="{Binding SettingsPageCommand}"
+                            HotKey="S">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Label Classes="Icon" Content="&#xE272;" />
+                            <Label VerticalAlignment="Center">Settings</Label>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Border CornerRadius="12 0 0 12">
+                    <TransitioningContentControl Content="{Binding CurrentPage}" />
+                    <!-- <ContentControl Content="{Binding CurrentPage}"></ContentControl> -->
+                </Border>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AvaloniaInitor.App"
+             xmlns:local="using:AvaloniaInitor"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Initor/Assets/Styles/App.axaml" />
+        <StyleInclude Source="avares://Initor/Assets/Styles/Icons.axaml" />
+    </Application.Styles>
+
+    <Application.Resources>
+        <FontFamily x:Key="Phosphor-Fill">/Assets/Fonts/Phosphor-Fill.ttf#Phosphor-Fill</FontFamily>
+    </Application.Resources>
+</Application>

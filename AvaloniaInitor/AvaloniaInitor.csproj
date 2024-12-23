@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <ApplicationIcon>Assets\initor.ico</ApplicationIcon>
+        <Product>AvaloniaInitor</Product>
+        <PackageId>AvaloniaInitor</PackageId>
+        <Company>AvaloniaInitor</Company>
+        <AssemblyName>Initor</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.2" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.2">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <PackageReference Include="dotenv.net" Version="3.2.1" />
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0" />
+        <PackageReference Include="YamlDotNet" Version="16.2.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Settings\EditorPerProjectUserSettings.ini" />
+      <Resource Include="Settings\EditorPerProjectUserSettings.ini">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Settings\Settings.yaml" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Assets\initor.ico" />
+      <AvaloniaResource Include="Assets\initor.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Assets\godot.png" />
+      <AvaloniaResource Include="Assets\godot.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Assets\ue.png" />
+      <AvaloniaResource Include="Assets\ue.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Assets\unity.png" />
+      <AvaloniaResource Include="Assets\unity.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Assets\Fonts\Phosphor-Fill.ttf" />
+      <AvaloniaResource Include="Assets\Fonts\Phosphor-Fill.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Settings\GodotPlugins\" />
+      <Folder Include="Settings\UnityPlugins\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove=".env" />
+      <AdditionalFiles Include=".env">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="xcopy $(ProjectDir)Settings $(TargetDir)Settings /Y /R /I /E" />
+    </Target>
+</Project>

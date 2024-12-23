@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:AvaloniaInitor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaInitor.Views.AppUserSettingsView"
+             x:DataType="viewModels:AppUserSettingsViewModel">
+    <Design.DataContext>
+        <viewModels:AppUserSettingsViewModel />
+    </Design.DataContext>
+    <ScrollViewer>
+        <StackPanel Margin="10 5 10 0" Spacing="5">
+            <TextBlock FontSize="30"
+                       Text="{Binding Title}" />
+            <Separator Margin="0 5 0 5" Height="1" />
+            <Label Margin="0 0 0 5" FontSize="16">Select a location to start the projects</Label>
+            <WrapPanel Margin="0 0 0 0">
+                <Button Margin=" 0 0 5 0" Click="ButtonUnityStartLocation_OnClick">Unity</Button>
+                <Label VerticalAlignment="Center" Content="{Binding UnityStartLocation}" />
+            </WrapPanel>
+            <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
+            <WrapPanel Margin="0 5 0 0">
+                <Button Margin=" 0 0 5 0" Click="ButtonUnrealStartLocation_OnClick">Unreal</Button>
+                <Label VerticalAlignment="Center" Content="{Binding UnrealStartLocation}" />
+            </WrapPanel>
+            <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
+            <WrapPanel Margin="0 5 0 0">
+                <Button Margin=" 0 0 5 0" Click="ButtonGodotStartLocation_OnClick">Godot</Button>
+                <Label VerticalAlignment="Center" Content="{Binding GodotStartLocation}" />
+            </WrapPanel>
+            <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

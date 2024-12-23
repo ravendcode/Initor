@@ -1,0 +1,27 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+            <Button Grid.Row="1" FontSize="16">
+                <StackPanel Orientation="Horizontal">
+                    <Label Classes="Icon" FontFamily="{DynamicResource Phosphor-Fill}" Content="&#xE272;"/>
+                </StackPanel>
+            </Button>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Label.Icon">
+        <Setter Property="FontFamily" Value="{DynamicResource Phosphor-Fill}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Margin" Value="-5 0 -5 -1" />
+    </Style>
+
+    <!-- <Style Selector="ListBoxItem"> -->
+    <!--     <Setter Property="Foreground" Value="Bisque"></Setter> -->
+    <!-- </Style> -->
+    <!-- <Style Selector="CheckBox"> -->
+    <!--     <Setter Property="Foreground" Value="Red"></Setter> -->
+    <!-- </Style> -->
+</Styles>
