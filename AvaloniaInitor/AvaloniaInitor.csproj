@@ -70,6 +70,25 @@
       <AdditionalFiles Include=".env">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AdditionalFiles>
+      <None Remove="Audio\Sounds\click.wav" />
+      <AdditionalFiles Include="Audio\Sounds\click.wav">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <None Remove="Audio\Sounds\error.wav" />
+      <None Remove="Audio\Sounds\success.wav" />
+      <AdditionalFiles Include="Audio\Sounds\success.wav">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Reference Include="irrKlang.NET4">
+        <HintPath>..\Libs\irrKlang.NET4.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="Audio\Sounds\error.wav" />
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

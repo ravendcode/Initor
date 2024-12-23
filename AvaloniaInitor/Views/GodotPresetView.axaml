@@ -18,7 +18,7 @@
             <CheckBox IsChecked="{Binding IsAddGodotPluginsSelected}"
                       IsEnabled="{Binding IsProjectSelected}"
                       Content="Add GodotPlugins"
-                      Margin="0 0 0 10" />
+                      Margin="0 0 0 5" />
             <CheckBox IsChecked="{Binding IsAppendProjectSelected}"
                       IsEnabled="{Binding IsProjectSelected}"
                       Content="Append content from project.godot"

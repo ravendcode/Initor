@@ -84,6 +84,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [RelayCommand] private void TriggerTheme()
     {
+        AudioHelper.PlaySound("click.wav");
         _isDarkTheme = !_isDarkTheme;
         if (_isDarkTheme)
         {
