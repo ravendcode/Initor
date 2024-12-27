@@ -74,7 +74,11 @@ public class PresetFileDataProvider : IPresetFileDataProvider
     private void ProjectNameToPascalCase()
     {
         var pascalCaseProjectName = "";
-        var chunks = Path.GetFileName(_config?.ProjectName!).Split();
+
+        var rawProjectName = Path.GetFileName(_config?.ProjectName!).Replace("-", " ");
+        rawProjectName = rawProjectName.Replace("_", " ");
+        // var chunks = Path.GetFileName(_config?.ProjectName!).Split();
+        var chunks = rawProjectName.Split();
         if (chunks.Length > 1)
         {
             foreach (var chunk in chunks)

@@ -53,7 +53,7 @@ public partial class MainWindowViewModel : ViewModelBase
 #if DEBUG
     public MainWindowViewModel()
     {
-        _appUserSettingsDataProvider = new AppUserAppUserSettingsDataProvider();
+        _appUserSettingsDataProvider = new AppUserSettingsDataProvider();
 
         _isDarkTheme = Application.Current!.ActualThemeVariant == ThemeVariant.Dark;
         ThemeIco = _isDarkTheme ? ThemeVariantIco.Light : ThemeVariantIco.Dark;
@@ -70,7 +70,6 @@ public partial class MainWindowViewModel : ViewModelBase
                 ImageHelper.LoadFromResource("Assets/godot.png"))
         ];
         _selectedListItem = Items[0];
-
     }
 #endif
 
@@ -100,7 +99,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [RelayCommand] private void SettingsPage() => CurrentPage = new AppUserSettingsViewModel(_appUserSettings!, _appUserSettingsDataProvider);
 
-    public async void SelectProject(MainWindow mainWindow)
+    public async void SelectProject(MainWindow mainWindow, Button button)
     {
         try
         {
@@ -117,6 +116,7 @@ public partial class MainWindowViewModel : ViewModelBase
             });
 
             if (folders.Count < 1) return;
+            button.Classes.Clear();
             ProjectPath = folders[0].Path.ToString().Replace("file:///", "");
             foreach (var item in Items)
             {

@@ -1,7 +1,5 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using AvaloniaInitor.Helpers;
 using AvaloniaInitor.ViewModels;
 
 namespace AvaloniaInitor.Views;
@@ -16,6 +14,6 @@ public partial class MainWindow : Window
 
     private void ButtonSelectProject_OnClick(object? sender, RoutedEventArgs e)
     {
-        (DataContext as MainWindowViewModel)?.SelectProject(this);
+        (DataContext as MainWindowViewModel)?.SelectProject(this, (sender as Button)!);
     }
 }

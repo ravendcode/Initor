@@ -30,7 +30,7 @@ public partial class AppUserSettingsViewModel : ViewModelBase
 #if DEBUG
     public AppUserSettingsViewModel()
     {
-        _appUserSettingsDataProvider = new AppUserAppUserSettingsDataProvider();
+        _appUserSettingsDataProvider = new AppUserSettingsDataProvider();
         _appUserSettings = new AppUserSettings
         {
             StartLocations = null!

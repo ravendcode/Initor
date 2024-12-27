@@ -14,7 +14,7 @@ public interface IAppUserSettingsDataProvider
     void Store(AppUserSettings appUserSettings);
 }
 
-public class AppUserAppUserSettingsDataProvider : IAppUserSettingsDataProvider
+public class AppUserSettingsDataProvider : IAppUserSettingsDataProvider
 {
     // private const string AppUserSettingsFile = "Settings\\AppUserSettings.yaml";
     private readonly string _appUserSettingsFile = DotEnv.Read()["APP_USER_SETTINGS_FILE"];

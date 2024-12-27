@@ -20,8 +20,8 @@
     <Grid RowDefinitions="Auto,*">
         <StackPanel Grid.Row="0" Margin="20" HorizontalAlignment="Left" Orientation="Horizontal">
             <!-- <Button Content="Select Project" Command="{Binding SelectProjectCommand}" /> -->
-            <Button Content="Select Project" Click="ButtonSelectProject_OnClick" FontSize="16" />
-            <Label Content="{Binding ProjectPath}" VerticalAlignment="Center" Margin="5" />
+            <Button Classes="AnimClickMe" Content="Select Project" Click="ButtonSelectProject_OnClick" FontSize="16" />
+            <TextBlock Text="{Binding ProjectPath}" VerticalAlignment="Center" Margin="5" />
             <!-- <Image Source="/Assets/avalonia-logo.ico" Height="200" /> -->
         </StackPanel>
 

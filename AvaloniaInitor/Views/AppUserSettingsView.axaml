@@ -17,17 +17,17 @@
             <Label Margin="0 0 0 5" FontSize="16">Select a location to start the projects</Label>
             <WrapPanel Margin="0 0 0 0">
                 <Button Margin=" 0 0 5 0" Click="ButtonUnityStartLocation_OnClick">Unity</Button>
-                <Label VerticalAlignment="Center" Content="{Binding UnityStartLocation}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding UnityStartLocation}" />
             </WrapPanel>
             <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
             <WrapPanel Margin="0 5 0 0">
                 <Button Margin=" 0 0 5 0" Click="ButtonUnrealStartLocation_OnClick">Unreal</Button>
-                <Label VerticalAlignment="Center" Content="{Binding UnrealStartLocation}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding UnrealStartLocation}" />
             </WrapPanel>
             <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
             <WrapPanel Margin="0 5 0 0">
                 <Button Margin=" 0 0 5 0" Click="ButtonGodotStartLocation_OnClick">Godot</Button>
-                <Label VerticalAlignment="Center" Content="{Binding GodotStartLocation}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding GodotStartLocation}" />
             </WrapPanel>
             <!-- <Rectangle StrokeDashArray="10" Stroke="DimGray" StrokeThickness="1" Fill="White"/> -->
         </StackPanel>

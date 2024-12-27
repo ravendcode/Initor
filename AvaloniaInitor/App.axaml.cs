@@ -1,8 +1,7 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
 using AvaloniaInitor.Data;
 using AvaloniaInitor.ViewModels;
@@ -26,9 +25,10 @@ public partial class App : Application
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
             DotEnv.Load(options: new DotEnvOptions(ignoreExceptions: false));
+
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(new AppUserAppUserSettingsDataProvider())
+                DataContext = new MainWindowViewModel(new AppUserSettingsDataProvider())
             };
         }
 

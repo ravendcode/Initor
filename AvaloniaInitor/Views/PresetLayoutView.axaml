@@ -12,7 +12,7 @@
 
     <StackPanel>
         <Button Content="Create"
-                Margin="0 0 0  15"
+                Margin="0 0 0  16"
                 FontSize="16"
                 IsEnabled="{Binding IsProjectSelected}"
                 Command="{Binding CreateAllCommand}" />
@@ -38,8 +38,9 @@
                 <DataTemplate>
                     <ListBoxItem Name="ListBoxItemPresetFile" FontSize="14">
                         <CheckBox IsChecked="{Binding  IsSelected}"
-                                  Margin="8 2"
-                                  Content="{Binding Name, Mode=TwoWay}" />
+                                  Margin="8 2">
+                            <TextBlock Text="{Binding Name}" />
+                        </CheckBox>
                     </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>
